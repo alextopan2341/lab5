@@ -4,8 +4,8 @@
 
 #include "console.h"
 #include "../Square/Square.h"
+#include "../Operations/Operations.h"
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 void readVector(int &n, Square v[]){
@@ -22,7 +22,11 @@ void readVector(int &n, Square v[]){
         if(isSquare(x,y,z,w)) {
                 Square sqr(x, y, z, w);
                 v[i] = sqr;
-                cout << v[i] << endl;
+                //cout << v[i] << endl;
+        }
+        else{
+            cout<<"That cannot be a square! Try again!"<<endl;
+            i--;
         }
     }
 
@@ -34,34 +38,6 @@ void printVector(int &n,Square v[]){
         cout<<"Square:"<<i<<endl;
         cout<<v[i]<<endl;
     }
-}
-
-void largestSquare(int &n, Square v[]){
-    float maxDiag = 0.0;
-    int i;
-    Square sqr;
-    for(i=0;i<n;i++)
-    {
-        if(v[i].diagonal()>maxDiag)
-        {
-            maxDiag=v[i].diagonal();
-            sqr = v[i];
-        }
-    }
-    cout<<sqr;
-}
-
-bool isSquare(float x, float y, float z, float w){
-    if (abs(x-z)== abs(y-w))
-        return true;
-    return false;
-}
-
-void firstQuadrant(int &n, Square v[], Square rez[], int &j){
-    j=0;
-    for(int i=0;i<n;i++)
-        if(v[i].get_x1()>0 && v[i].get_y1()>0 && v[i].get_x2()>0 && v[i].get_y2()>0)
-            rez[j++] = v[i];
 }
 
 void Options(){

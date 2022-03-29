@@ -27,9 +27,8 @@ Square::Square(float x1, float y1, float x2, float y2) {
     this->y2 = y2;
 }
 
-
 float Square::diagonal() {
-    return sqrt(pow(x2-x1,2) + pow(y2-y1,2));
+    return sqrt((pow(x2-x1,2) + pow(y2-y1,2)));
 }
 
 std::ostream &operator<<(ostream &os, const Square &sqr) {

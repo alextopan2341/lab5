@@ -6,16 +6,18 @@
 #include <iostream>
 #include "../console/console.h"
 #include "../Square/Square.h"
+#include "../Operations/Operations.h"
 using namespace std;
 int runMenu(Square v[],Square rez[]){
     int ok = 1,l=0,n,j;
+    Square sqr;
     int startpoz,seqlen,a,b;
     char option;
     while(ok == 1)
     {
         Options();
 
-        cout<<"Dati optiunea: ";
+        cout<<"Give the option you want: ";
         cin >> option;
         switch(option)
         {
@@ -27,11 +29,17 @@ int runMenu(Square v[],Square rez[]){
                 printVector(n,v);
                 break;
             case '1':
-                largestSquare(n,v);
+                largestSquare(n,v,sqr);
+                cout<<sqr;
                 break;
             case '2':
                 firstQuadrant(n,v,rez,j);
                 printVector(j,rez);
+                break;
+            case '3':
+                getLongestSequenceWithEqualsSquares(n,v,a,b);
+                for (int i = a; i <= b; i++)
+                    cout << v[i] << endl;
                 break;
             case 'x':
                 ok=0;
@@ -40,5 +48,4 @@ int runMenu(Square v[],Square rez[]){
                 cout<<"Wrong option! Try again!";
         }
     }
-    delete[] v;
 }
